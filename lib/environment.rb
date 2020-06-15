@@ -1,5 +1,6 @@
 require "nokogiri"
 require "pry"
+require "open-uri"
 
 module CheeseBoard
   class Error < StandardError; end
