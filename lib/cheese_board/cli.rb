@@ -4,6 +4,7 @@ class CheeseBoard::CLI
   end
 
   def list_of_cheese_type
-    
+    puts "cheese"
+
   end
 end
