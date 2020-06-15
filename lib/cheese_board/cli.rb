@@ -1,5 +1,9 @@
 class CheeseBoard::CLI
   def call
-    puts "Welcome to Cheesy World!"
+    list_of_cheese_type
+  end
+
+  def list_of_cheese_type
+    
   end
 end
