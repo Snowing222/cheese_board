@@ -23,13 +23,19 @@ class CheeseBoard::CLI
   end
 
   def get_user_cheese_type
-    chosen_cheese_type=gets.strip
-    if valid_input?(chosen_cheese_type, @cheese_types)
+    chosen_cheese_type=gets.strip.to_i
+    show_cheese_type_for(chosen_cheese_type)if valid_input?(chosen_cheese_type, @cheese_types)
 
   end
 
   def valid_input?(input,array)
     input.to_i > 0 && input.to_i <= array.length
+  end
+
+  def show_cheese_type_for(chosen_cheese_type)
+    cheese_type=@cheese_types[chosen_cheese_type-1]
+    puts "Here are the information for #{cheese_type}"
+    binding.pry
   end
 
 end
