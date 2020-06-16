@@ -1,8 +1,7 @@
 class CheeseBoard::Scraper
-  BASEPATH="https://www.castellocheese.com/en-us/cheese-types/"
 
-  def self.scrape_cheese_type
-    doc=Nokogiri::HTML(open(BASEPATH))
+  def self.scrape_cheese_types
+    doc = Nokogiri::HTML(open("https://www.castellocheese.com/en-us/cheese-types/"))
     doc.css("div.generic-overview-grid--no-scroll a.generic-card__link").map do |cheese_type|
       cheese_type.text
     end
