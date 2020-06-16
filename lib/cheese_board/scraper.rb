@@ -15,7 +15,8 @@ class CheeseBoard::Scraper
     #takes in blue mold cheese to blue-mold-cheese/
   end
 
-  def scrape_cheese_type_info_page(cheese_type_url)
-    #return hash with propertyies
+  def self.scrape_cheeses(cheese_type)
+    CheeseBoard::Cheese.new("abc",cheese_type)
+    CheeseBoard::Cheese.new("def",cheese_type)
   end
 end

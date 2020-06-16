@@ -1,6 +1,6 @@
 class CheeseBoard::CheeseType
   @@all=[]
-  attr_accessor :name, :description, :cheese
+  attr_accessor :name, :description, :cheeses
 
   def initialize(name)
     @name=name
@@ -13,10 +13,8 @@ class CheeseBoard::CheeseType
     @@all
   end
 
-  def cheeses
-    binding.pry
+  def get_cheeses
     CheeseBoard::Scraper.scrape_cheeses(self) if @cheeses.empty?
-    @cheeses
   end
 
   def save

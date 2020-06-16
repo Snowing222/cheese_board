@@ -34,8 +34,11 @@ class CheeseBoard::CLI
 
   def show_cheese_type_for(chosen_cheese_type)
     cheese_type=@cheese_types[chosen_cheese_type-1]
-    cheeses = cheese_type.cheeses
+    cheese_type.get_cheeses
     puts "Here are the information for #{cheese_type.name}"
+    cheese_type.cheeses.each.with_index(1) do |cheese,index|
+      puts "#{index}. #{cheese.name}"
+    end
 
     # CheeseBoard::Cheese.all.each.with_index(1) do |cheese|
     #   puts "#{cheese.name}"
