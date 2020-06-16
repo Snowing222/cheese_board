@@ -1,6 +1,6 @@
 class CheeseBoard::CLI
   def call
-    puts "\nWelcome to Cheese_board! Are you ready to explore the CHEEZZZYY-WORLD?"
+    puts "\nWelcome to Cheese Board! Are you ready to explore the CHEEZZZYY-WORLD?"
     get_cheese_types
     list_cheese_types
     get_user_cheese_type
@@ -11,12 +11,15 @@ class CheeseBoard::CLI
 
   def get_cheese_types
     #to be scraped instead
+    CheeseBoard::Scraper.scrape_cheese_types.each do |cheese_type|
+      CheeseBoard::CheeseType.new(cheese_type)
+    end
     @cheese_types=CheeseBoard::CheeseType.all
   end
 
   def list_cheese_types
     #list cheese type
-    puts "\nWhat type of cheese do you are you interested in. Please enter number of the cheese, or exit"
+    puts "\nWhat type of cheese are you interested in. Please enter number of the cheese, or exit"
     @cheese_types.each.with_index(1) do |cheese_type, index|
       puts "#{index}. #{cheese_type.name}"
     end
@@ -34,7 +37,7 @@ class CheeseBoard::CLI
 
   def show_cheese_type_for(chosen_cheese_type)
     cheese_type=@cheese_types[chosen_cheese_type-1]
-    puts "Here are the information for #{cheese_type}"
+    puts "Here are the information for #{cheese_type.name}"
 
     # CheeseBoard::Cheese.all.each.with_index(1) do |cheese|
     #   puts "#{cheese.name}"
