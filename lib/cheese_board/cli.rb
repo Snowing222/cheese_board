@@ -18,7 +18,7 @@ class CheeseBoard::CLI
     #list cheese type
     puts "\nWhat type of cheese do you are you interested in. Please enter number of the cheese, or exit"
     @cheese_types.each.with_index(1) do |cheese_type, index|
-      puts "#{index}. #{cheese_type}"
+      puts "#{index}. #{cheese_type.name}"
     end
   end
 
