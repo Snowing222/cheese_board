@@ -11,9 +11,6 @@ class CheeseBoard::CLI
 
   def get_cheese_types
     #to be scraped instead
-    CheeseBoard::Scraper.scrape_cheese_types.each do |cheese_type|
-      CheeseBoard::CheeseType.new(cheese_type)
-    end
     @cheese_types=CheeseBoard::CheeseType.all
   end
 

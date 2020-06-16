@@ -8,6 +8,7 @@ class CheeseBoard::CheeseType
   end
 
   def self.all
+    CheeseBoard::Scraper.scrape_cheese_types if @@all.empty?
     @@all
   end
 

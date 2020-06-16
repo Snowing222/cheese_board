@@ -2,8 +2,10 @@ class CheeseBoard::Scraper
 
   def self.scrape_cheese_types
     doc = Nokogiri::HTML(open("https://www.castellocheese.com/en-us/cheese-types/"))
-    doc.css("div.generic-overview-grid--no-scroll a.generic-card__link").map do |cheese_type|
-      cheese_type.text
+    cheese_types=doc.css("div.generic-overview-grid--no-scroll a.generic-card__link")
+    cheese_types.map do |cheese_type|
+      name=cheese_type.text
+      CheeseBoard::CheeseType.new(name)
     end
 
     #return array of cheese type
