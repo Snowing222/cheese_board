@@ -1,22 +1,35 @@
 class CheeseBoard::CLI
   def call
-    puts "Welcome to Cheese_board! Are you ready to explore the CHEEZZZYY-WORLD?"
-    puts ""
-    get_list_of_cheese_type
+    puts "\nWelcome to Cheese_board! Are you ready to explore the CHEEZZZYY-WORLD?"
+    get_cheese_types
+    list_cheese_types
     get_user_cheese_type
     #get_cheese_for(cheese_type)
     #list cheeses
+
   end
 
-  def get_list_of_cheese_type
+  def get_cheese_types
     #to be scraped instead
     @cheese_types=["hard cheese", "soft cheese" ,"fresh cheese", "goat cheese"]
   end
 
-  def get_user_cheese_type
+  def list_cheese_types
     #list cheese type
+    puts "\nWhat type of cheese do you are you interested in. Please enter number of the cheese, or exit"
     @cheese_types.each.with_index(1) do |cheese_type, index|
       puts "#{index}. #{cheese_type}"
     end
   end
+
+  def get_user_cheese_type
+    chosen_cheese_type=gets.strip
+    if valid_input?(chosen_cheese_type, @cheese_types)
+
+  end
+
+  def valid_input?(input,array)
+    input.to_i > 0 && input.to_i <= array.length
+  end
+
 end
