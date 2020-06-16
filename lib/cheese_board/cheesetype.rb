@@ -14,8 +14,9 @@ class CheeseBoard::CheeseType
   end
 
   def cheeses
-    CheeseBoard::Scraper.scrape_cheeses if @cheeses.empty?
-
+    binding.pry
+    CheeseBoard::Scraper.scrape_cheeses(self) if @cheeses.empty?
+    @cheeses
   end
 
   def save
