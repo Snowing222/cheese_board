@@ -11,7 +11,7 @@ class CheeseBoard::CLI
 
   def get_cheese_types
     #to be scraped instead
-    @cheese_types=["hard cheese", "soft cheese" ,"fresh cheese", "goat cheese"]
+    @cheese_types=CheeseBoard::CheeseType.all
   end
 
   def list_cheese_types
