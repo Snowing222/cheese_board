@@ -1,7 +1,6 @@
 class CheeseBoard::CLI
   def call
     puts "\nWelcome to Cheese Board! Are you ready to explore the CHEEZZZYY-WORLD?"
-    get_cheese_types
     list_cheese_types
     get_user_cheese_type
     get_user_cheese
@@ -10,15 +9,16 @@ class CheeseBoard::CLI
 
   end
 
-  def get_cheese_types
-    @cheese_types=CheeseBoard::CheeseType.all
-  end
-
   def list_cheese_types
+    get_cheese_types
     puts "\nWhat type of cheese are you interested in. Please enter number of the cheese, or exit"
     @cheese_types.each.with_index(1) do |cheese_type, index|
       puts "#{index}. #{cheese_type.name}"
     end
+  end
+
+  def get_cheese_types
+    @cheese_types=CheeseBoard::CheeseType.all
   end
 
   def get_user_cheese_type
@@ -32,10 +32,6 @@ class CheeseBoard::CLI
 
   def valid_input?(input,array)
     input.to_i > 0 && input.to_i <= array.length
-  end
-
-  def say_good_bye
-    puts "See you next time!"
   end
 
   def show_cheese_type_for(chosen_cheese_type)
@@ -57,6 +53,7 @@ class CheeseBoard::CLI
     when "back"
       list_cheese_types
       get_user_cheese_type
+      get_user_cheese
     else
       show_cheese_for(input.to_i) if valid_input?(input, @cheese_type.cheeses)
     end
@@ -67,6 +64,10 @@ class CheeseBoard::CLI
     CheeseBoard::Scraper.scrape_cheese_descriptions
     puts "\n#{cheese.cheese_description}"
     puts "\n#{cheese.pair_wine}"
+ end
+
+ def say_good_bye
+   puts "See you next time!"
  end
 
 end
