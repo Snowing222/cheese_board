@@ -1,17 +1,14 @@
 class CheeseBoard::CLI
   def call
-    puts "\nWelcome to Cheese Board! Are you ready to explore the CHEEZZZYY-WORLD?"
+    puts "\nWelcome to Cheese Board! Are you ready to explore the CHEEZZZYY-WORLD?".colorize(:yellow)
     list_cheese_types
     get_user_cheese_type
     get_user_cheese
-    #get_cheese_for(cheese_type)
-    #list cheeses
-
   end
 
   def list_cheese_types
     get_cheese_types
-    puts "\nWhat type of cheese are you interested in. Please enter number of the cheese, or 'exit'"
+    puts "\nWhat type of cheese are you interested in. Please enter number of the cheese, or #{ColorizedString["exit"].colorize(:red)}"
     @cheese_types.each.with_index(1) do |cheese_type, index|
       puts "#{index}. #{cheese_type.name}"
     end
@@ -42,7 +39,7 @@ class CheeseBoard::CLI
     @cheese_type.get_cheeses
     puts "Here are the information for #{@cheese_type.name}"
     puts "\nIt's #{@cheese_type.char}"
-    puts "\nEnter a number for the cheese you are interested in, 'back' to discover more,or 'exit'"
+    puts "\nEnter a number for the cheese you are interested in, #{ColorizedString["back"].colorize(:red)} to discover more, or #{ColorizedString["exit"].colorize(:red)}"
     @cheese_type.cheeses.each.with_index(1) do |cheese,index|
       puts "#{index}. #{cheese.name}"
     end
@@ -70,12 +67,12 @@ class CheeseBoard::CLI
     CheeseBoard::Scraper.scrape_cheese_descriptions
     puts "#{cheese.cheese_description}"
     puts "\n#{cheese.pair_wine}"
-    puts "\nEnter 'back' to discover more cheeses, or 'exit'"
+    puts "\nEnter #{ColorizedString["back"].colorize(:red)} to discover more cheeses, or #{ColorizedString["exit"].colorize(:red)}"
     get_user_cheese
  end
 
  def say_good_bye
-   puts "See you next time!"
+   puts "See you next time!".colorize(:yellow)
    exit!
  end
 
