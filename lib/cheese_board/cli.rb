@@ -42,7 +42,8 @@ class CheeseBoard::CLI
     @cheese_type=@cheese_types[chosen_cheese_type-1]
     @cheese_type.get_cheeses
     puts "Here are the information for #{@cheese_type.name}"
-    puts "Enter a number for the cheese you are interested in, 'back; to go back, or exit"
+    puts "\nIt's #{@cheese_type.char}"
+    puts "\nEnter a number for the cheese you are interested in, 'back; to go back, or exit"
     @cheese_type.cheeses.each.with_index(1) do |cheese,index|
       puts "#{index}. #{cheese.name}"
     end
@@ -64,7 +65,7 @@ class CheeseBoard::CLI
   def show_cheese_for(chosen_cheese)
     cheese = @cheese_type.cheeses[chosen_cheese-1]
     CheeseBoard::Scraper.scrape_cheese_descriptions
-    puts "#{cheese.cheese_description}"
+    puts "\n#{cheese.cheese_description}"
     puts "\n#{cheese.pair_wine}"
  end
 

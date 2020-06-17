@@ -1,6 +1,6 @@
 class CheeseBoard::CheeseType
   @@all=[]
-  attr_accessor :name, :description, :cheeses
+  attr_accessor :name, :char, :cheeses
 
   def initialize(name)
     @name=name

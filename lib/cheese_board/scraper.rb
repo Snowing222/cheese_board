@@ -14,7 +14,7 @@ class CheeseBoard::Scraper
     @url = BASEPATH + @cheese_type.name.gsub(" ","-") + "/"
     doc = Nokogiri::HTML(open(@url))
     heads = doc.css("div.cheese-category__inner.row-container h4")
-    heads.shift
+    cheese_type.char=heads.shift.text
     heads.each.with_index do |h|
       name = h.text
       CheeseBoard::Cheese.new(name, cheese_type)
