@@ -31,7 +31,6 @@ class CheeseBoard::Scraper
     @cheese_type.cheeses.zip(c_d , p_w).each do |cheese,c_des,p_des|
       cheese.cheese_description=c_des
       cheese.pair_wine=p_des
-      binding.pry
     end
 
   end

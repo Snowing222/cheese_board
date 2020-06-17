@@ -62,9 +62,10 @@ class CheeseBoard::CLI
   end
 
   def show_cheese_for(chosen_cheese)
-    puts "here is the info"
-    puts "#{chosen_cheese.cheese_description}"
-    puts "#{chosen_cheese.pair_wine}"
-  end
+    cheese = @cheese_type.cheeses[chosen_cheese-1]
+    CheeseBoard::Scraper.scrape_cheese_descriptions
+    puts "#{cheese.cheese_description}"
+    puts "\n#{cheese.pair_wine}"
+ end
 
 end
