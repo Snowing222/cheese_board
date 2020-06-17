@@ -21,4 +21,8 @@ class CheeseBoard::CheeseType
     @@all << self
   end
 
+  def count
+    @cheese.length
+  end
+
 end

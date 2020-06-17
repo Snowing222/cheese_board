@@ -63,6 +63,8 @@ class CheeseBoard::CLI
 
   def show_cheese_for(chosen_cheese)
     puts "here is the info"
+    puts "#{chosen_cheese.cheese_description}"
+    puts "#{chosen_cheese.pair_wine}"
   end
 
 end
