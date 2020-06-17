@@ -17,8 +17,4 @@ class CheeseBoard::Cheese
     @@all << self
   end
 
-  def add_to_cheesetype
-    @cheesetype.cheeses << self unless @cheesetype.cheeses.include?(self)
-  end
-
 end
