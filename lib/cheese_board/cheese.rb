@@ -17,4 +17,8 @@ class CheeseBoard::Cheese
     @@all << self
   end
 
+  def add_to_cheesetype
+    @cheesetype.cheeses << self
+  end
+
 end
