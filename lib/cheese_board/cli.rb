@@ -14,15 +14,23 @@ class CheeseBoard::CLI
   end
 
   def list_cheese_types
-    get_cheese_types
+    @cheese_types=get_cheese_types
     puts "\nWhat type of cheese are you interested in. Please enter number of the cheese, or #{ColorizedString["exit"].colorize(:red)}"
-    @cheese_types.each.with_index(1) do |cheese_type, index|
-      puts "#{index}. #{cheese_type.name}"
-    end
+    print_list(@cheese_types)
   end
 
   def get_cheese_types
-    @cheese_types=CheeseBoard::CheeseType.all
+    CheeseBoard::CheeseType.all
+  end
+
+  def print_list(array)
+    array.each.with_index(1) do |value, index|
+      puts "#{index}. #{value.name}"
+    end
+  end
+
+  def valid_input?(input,array)
+    input.to_i > 0 && input.to_i <= array.length
   end
 
   def get_user_cheese_type
@@ -40,19 +48,13 @@ class CheeseBoard::CLI
     end
   end
 
-  def valid_input?(input,array)
-    input.to_i > 0 && input.to_i <= array.length
-  end
-
   def show_cheese_type_for(chosen_cheese_type)
     @cheese_type=@cheese_types[chosen_cheese_type-1]
     @cheese_type.get_cheeses
     puts "Here are the information for #{@cheese_type.name}"
     puts "\n#{@cheese_type.char}".colorize(:blue)
     puts "\nEnter a number for the cheese you are interested in, #{ColorizedString["back"].colorize(:red)} to discover more, or #{ColorizedString["exit"].colorize(:red)}"
-    @cheese_type.cheeses.each.with_index(1) do |cheese,index|
-      puts "#{index}. #{cheese.name}"
-    end
+    print_list(@cheese_type.cheeses)
   end
 
   def get_user_cheese
@@ -83,7 +85,6 @@ class CheeseBoard::CLI
     puts "#{cheese.pair_wine}"
     puts "\nEnter #{ColorizedString["back"].colorize(:red)} to discover more cheeses, or #{ColorizedString["exit"].colorize(:red)}"
     get_user_cheese
-
  end
 
  def say_good_bye
