@@ -1,6 +1,13 @@
 class CheeseBoard::CLI
   def call
     puts "\nWelcome to Cheese Board! Are you ready to explore the CHEEZZZYY-WORLD?".colorize(:yellow)
+    run
+
+  end
+#current position=top,cheese_type, cheese,
+#when back => what index currently at -1, grab the position, run the method
+
+  def run
     list_cheese_types
     get_user_cheese_type
     get_user_cheese
@@ -57,9 +64,7 @@ class CheeseBoard::CLI
     if input=="exit"
       say_good_bye
     elsif input=="back"
-      list_cheese_types
-      get_user_cheese_type
-      get_user_cheese
+      run
     elsif valid_input?(input, @cheese_type.cheeses)
       show_cheese_for(input.to_i)
     else
