@@ -24,7 +24,7 @@ class CheeseBoard::Scraper
     end
   end
 
-  def self.scrape_cheese_descriptions
+  def self.scrape_cheese_description
     doc = Nokogiri::HTML(open(@@url))
     description_count=@@cheese_type.cheeses.count*2
     descriptions = doc.css("div.cheese-category__inner.row-container p")

@@ -75,7 +75,7 @@ class CheeseBoard::CLI
 
   def show_cheese_for(chosen_cheese)
     cheese = @cheese_type.cheeses[chosen_cheese-1]
-    CheeseBoard::Scraper.scrape_cheese_descriptions
+    cheese.get_cheese_description
     puts "CHARACTERISTICS".colorize(:blue)
     puts "#{cheese.cheese_description}"
     puts ""
@@ -88,7 +88,7 @@ class CheeseBoard::CLI
 
  def say_good_bye
    puts "See you next time!".colorize(:yellow)
-   exit!
+   exit
  end
 
 end
