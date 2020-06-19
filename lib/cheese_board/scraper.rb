@@ -14,18 +14,15 @@ class CheeseBoard::Scraper
 
   def self.scrape_cheeses(cheese_type)
     @@cheese_type = cheese_type
-    @@url = BASEPATH + @@cheese_type.name.gsub(" ","-") + "/"
-    doc = Nokogiri::HTML(open(@@url))
+    url = BASEPATH + @@cheese_type.name.gsub(" ","-") + "/"
+    doc = Nokogiri::HTML(open(url))
     heads = doc.css("div.cheese-category__inner.row-container h4")
     cheese_type.char = heads.shift.text
     heads.each.with_index do |h|
       name = h.text
       CheeseBoard::Cheese.new(name, cheese_type)
     end
-  end
 
-  def self.scrape_cheese_description
-    doc = Nokogiri::HTML(open(@@url))
     description_count = @@cheese_type.cheeses.count*2
     descriptions = doc.css("div.cheese-category__inner.row-container p")
     t = descriptions.map {|x| x.text}.last(description_count)
@@ -35,6 +32,6 @@ class CheeseBoard::Scraper
       cheese.cheese_description = c_des
       cheese.pair_wine = p_des
     end
-
   end
+
 end

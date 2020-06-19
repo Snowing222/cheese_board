@@ -93,7 +93,6 @@ class CheeseBoard::CLI
 
   def show_cheese_for(chosen_cheese)
     cheese = @cheese_type.cheeses[chosen_cheese-1]
-    cheese.get_cheese_description
     puts "CHARACTERISTICS".colorize(:blue)
     puts "#{cheese.cheese_description}"
     puts ""

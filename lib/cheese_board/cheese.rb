@@ -21,8 +21,4 @@ class CheeseBoard::Cheese
     @cheesetype.cheeses << self
   end
 
-  def get_cheese_description
-    (@pair_wine && @cheese_description) || CheeseBoard::Scraper.scrape_cheese_description
-  end
-
 end
