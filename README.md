@@ -1,8 +1,12 @@
 # CheeseBoard
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/cheese_board`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Welcome to your new gem!
+It's a gem for cheese lovers!
+Cheese Board helps you to discover the CHEEZZZYY-WORLD!
+It sorts cheese by type, and introduce the characteristic for each types.
+It also lists the most classic cheeses for each type for you to explore more.
+You can gain knowledge about their characteristic and wine to pair.
+Bon appetit and Enjoy!
 
 ## Installation
 

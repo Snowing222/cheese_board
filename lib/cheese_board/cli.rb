@@ -104,7 +104,8 @@ class CheeseBoard::CLI
  end
 
  def say_good_bye
-   puts "See you next time!".colorize(:yellow)
+   puts "BON APPETIT!".colorize(:yellow)
+   puts "SEE YOU NEXT TIME!".colorize(:yellow)
    exit
  end
 

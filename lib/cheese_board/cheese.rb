@@ -1,10 +1,10 @@
 class CheeseBoard::Cheese
-  @@all=[]
-  attr_accessor :name, :pair_wine, :cheesetype, :cheese_description
+  @@all = []
+  attr_accessor :name, :cheesetype, :cheese_description, :pair_wine
 
   def initialize(name, cheesetype)
-    @name=name
-    @cheesetype=cheesetype
+    @name = name
+    @cheesetype = cheesetype
     add_to_cheesetype
     save
   end
@@ -22,7 +22,7 @@ class CheeseBoard::Cheese
   end
 
   def get_cheese_description
-    CheeseBoard::Scraper.scrape_cheese_description if !(@pair_wine && @cheese_description)
+    (@pair_wine && @cheese_description) || CheeseBoard::Scraper.scrape_cheese_description
   end
 
 end
