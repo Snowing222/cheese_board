@@ -1,20 +1,18 @@
 class CheeseBoard::CLI
   def call
-    puts "\nWelcome to Cheese Board! Are you ready to explore the CHEEZZZYY-WORLD?".colorize(:yellow)
+    greeting = "Welcome to Cheese Board"
+    box_a_string(greeting)
+    puts "Are you ready to explore the CHEEZZZYY-WORLD?".colorize(:yellow)
     run
-
   end
-#current position=top,cheese_type, cheese,
-#when back => what index currently at -1, grab the position, run the method
 
   def run
     list_cheese_types
     get_user_cheese_type
-    get_user_cheese
   end
 
   def list_cheese_types
-    @cheese_types=get_cheese_types
+    @cheese_types = get_cheese_types
     puts "\nWhat type of cheese are you interested in. Please enter number of the cheese, or #{ColorizedString["exit"].colorize(:red)}"
     print_list(@cheese_types)
   end
@@ -38,7 +36,8 @@ class CheeseBoard::CLI
     input = gets.strip
     puts ""
     sleep 1
-    if input=="exit"
+
+    if input =="exit"
       say_good_bye
     elsif valid_input?(input, @cheese_types)
       show_cheese_type_for(input.to_i)
@@ -48,13 +47,30 @@ class CheeseBoard::CLI
     end
   end
 
+  def box_a_string(string)
+    puts ""
+    print " "
+    (string.length+2).times do print "_" end
+    puts ""
+    puts ""
+    puts "| #{string} |"
+    print " "
+    (string.length+2).times do print "_" end
+    puts ""
+  end
+
+
   def show_cheese_type_for(chosen_cheese_type)
-    @cheese_type=@cheese_types[chosen_cheese_type-1]
+    @cheese_type = @cheese_types[chosen_cheese_type-1]
     @cheese_type.get_cheeses
     puts "Here are the information for #{@cheese_type.name}"
-    puts "\n#{@cheese_type.char}".colorize(:blue)
+    cheese_type_char = @cheese_type.char
+    box_a_string(cheese_type_char)
+
     puts "\nEnter a number for the cheese you are interested in, #{ColorizedString["back"].colorize(:red)} to discover more, or #{ColorizedString["exit"].colorize(:red)}"
     print_list(@cheese_type.cheeses)
+
+    get_user_cheese
   end
 
   def get_user_cheese
@@ -63,9 +79,9 @@ class CheeseBoard::CLI
     puts ""
     sleep 1
 
-    if input=="exit"
+    if input == "exit"
       say_good_bye
-    elsif input=="back"
+    elsif input == "back"
       run
     elsif valid_input?(input, @cheese_type.cheeses)
       show_cheese_for(input.to_i)
