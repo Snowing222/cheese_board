@@ -18,7 +18,7 @@ class CheeseBoard::CLI
   end
 
   def get_cheese_types
-    CheeseBoard::CheeseType.all
+    CheeseBoard::CheeseType.all.sort_by {|c| c.name}
   end
 
   def print_list(array)
