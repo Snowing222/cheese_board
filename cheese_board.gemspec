@@ -9,23 +9,10 @@ Gem::Specification.new do |spec|
   spec.authors       = ["'elsa chen'"]
   spec.email         = ["'snowing222@gmail.com'"]
 
-  spec.summary       = %q{all about cheese}
-  spec.description   = %q{learn more about cheese}
+  spec.summary       = %q{a gem for cheese lover to learn more about the cheeses they love}
   spec.homepage      = "https://github.com/Snowing222/cheese_board.git"
   spec.license       = "MIT"
 
-  # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
-  # to allow pushing to a single host or delete this section to allow pushing to any host.
-  if spec.respond_to?(:metadata)
-    spec.metadata["allowed_push_host"] = "https://github.com"
-
-    spec.metadata["homepage_uri"] = "https://github.com/Snowing222/cheese_board.git"
-    spec.metadata["source_code_uri"] = "https://github.com/Snowing222/cheese_board.git"
-    spec.metadata["changelog_uri"] = "https://github.com/Snowing222/cheese_board.git"
-  else
-    raise "RubyGems 2.0 or newer is required to protect against " \
-      "public gem pushes."
-  end
 
   # Specify which files should be added to the gem when it is released.
   # The `git ls-files -z` loads the files in the RubyGem that have been added into git.
